@@ -10,6 +10,12 @@ First, install the plugin with its peer dependencies:
 npm i @tinalabs/react-tinacms-field-grid react react-dom tinacms react-tinacms-inline
 ```
 
+## Pre-requisites
+
+This field assumes you alread have Tina setup in a React application.
+
+If not, please see the [Tina Documentation](https://tinacms.org/docs) to get started.
+
 ## Usage
 
 First, setup a Tina form inside an InlineForm:
@@ -18,7 +24,7 @@ First, setup a Tina form inside an InlineForm:
 import { useForm } from "tinacms";
 import { InlineForm } from "react-tinacms-inline";
 
-export function PageBuilder(props) {
+export function MyApp(props) {
   const form = useForm(props);
 
   return (
