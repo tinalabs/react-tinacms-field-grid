@@ -15,6 +15,9 @@ npm i @tinalabs/react-tinacms-field-grid react react-dom tinacms react-tinacms-i
 First, setup a Tina form inside an InlineForm:
 
 ```
+import { useForm } from "tinacms";
+import { InlineForm } from "react-tinacms-inline";
+
 export function PageBuilder(props) {
   const form = useForm(props);
 
@@ -116,6 +119,9 @@ export default {
 ```
 
 ```
+import { useForm } from "tinacms";
+import { InlineForm } from "react-tinacms-inline";
+import { InlineGrid } from "react-tinacms-field-grid";
 import RowBlock from "./RowBlock";
 import ColumnBlock from "./ColumnBlock";
 import ParagraphBlock from "./ParagraphBlock";
