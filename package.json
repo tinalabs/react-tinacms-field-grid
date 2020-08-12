@@ -1,0 +1,47 @@
+{
+  "name": "@tinalabs/react-tinacms-field-grid",
+  "version": "0.1.0",
+  "description": "A Flexbox grid builder field",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "dependencies": {
+    "lodash.get": "^4.4.2",
+    "react-tinacms-inline": "^0.27.3",
+    "tinacms": "^0.27.1"
+  },
+  "devDependencies": {
+    "@tinacms/scripts": "^0.26.0",
+    "@types/react": "^16.9.46",
+    "commander": "^6.0.0",
+    "rollup": "^2.23.1",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-replace": "^2.2.0",
+    "rollup-plugin-typescript2": "^0.27.2",
+    "rollup-plugin-uglify": "^6.0.4",
+    "typescript": "^3.9.7",
+    "typescript-plugin-styled-components": "^1.4.4"
+  },
+  "peerDependencies": {
+    "react-tinacms-inline": "^0.27.3",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "tinacms": "^0.27.1"
+  },
+  "scripts": {
+    "start": "npm run watch",
+    "watch": "tinacms-scripts watch",
+    "dev": "tinacms-scripts dev",
+    "build": "tinacms-scripts build",
+    "test": "jest --passWithNoTests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tinalabs/react-tinacms-field-grid.git"
+  },
+  "author": "@chrisdmacrae",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tinalabs/react-tinacms-field-grid/issues"
+  },
+  "homepage": "https://github.com/tinalabs/react-tinacms-field-grid#readme"
+}
