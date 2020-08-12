@@ -252,3 +252,51 @@ export const ColumnBlockTemplate = {
   fields: []
 }
 ```
+
+### Lazy Loading Blocks
+
+For a simple `InlineGrid` with a few blocks, performance is not a problem. But once your get to dozens or even hundreds of blocks, this becomes a major performance concern for users.
+
+Considering, `InlineGrid` allows the lazy loading of blocks, and will:
+
+- Lazy load all available blocks when in editing mode
+- Lazy load only the blocks used by the layout when not in editing mode
+
+This is done by passing an array of block resolvers, which match the interface:
+
+```
+{
+  id: string;
+  importFunc: () => {
+    Component: React.FunctionalComponent
+    template: BlockTemplate
+    preview: React.FunctionalComponent
+  }
+}
+```
+
+For example, for our example above:
+
+```
+export function MyApp(props) {
+  const form = useForm(props);
+  const blocks = useMemo(() => {
+    return [
+      {
+        id: "paragraph",
+        importFunc: async () => (await import("./ParagraphBlock)).default
+      }
+    ]
+  }, []);
+
+  return (
+    <InlineForm form={form}>
+      <InlineGrid
+        row={RowBlock}
+        column={ColumnBlock}
+        blocks={blocks}
+      />
+    </InlineForm>
+  );
+}
+```
