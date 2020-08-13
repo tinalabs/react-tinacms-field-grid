@@ -5,9 +5,7 @@
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "dependencies": {
-    "lodash.get": "^4.4.2",
-    "react-tinacms-inline": "^0.27.3",
-    "tinacms": "^0.27.1"
+    "lodash.get": "^4.4.2"
   },
   "devDependencies": {
     "@tinacms/scripts": "^0.26.0",
