@@ -15,6 +15,13 @@ export function RowRenderer(props: RowRendererProps) {
   const { options } = useContext(InlineGridContext);
   const { row, column, direction } = options;
   const Row = ("Component" in row) ? row.Component : row.Block.Component;
+  const RowBlocksContainer = ({ ref, children }) => (
+    <div ref={ref}>
+      <Row data={props.data} index={props.index}>
+        {children}
+      </Row>
+    </div>
+  );
   const columnBlocks = {
     column: {
       Component: ColumnRenderer,
@@ -28,16 +35,9 @@ export function RowRenderer(props: RowRendererProps) {
       name="cols"
       direction={direction === "vertical" ? "horizontal" : "vertical"}
       blocks={columnBlocks}
+      components={{ Container: RowBlocksContainer}}
       {...colProps}
-    >
-      {({providedRef, children}) => (
-        <div ref={providedRef}>
-          <Row data={props.data} index={props.index}>
-            {children}
-          </Row>
-        </div>
-      )}
-    </InlineBlocks>
+    />
   );
 }
 
