@@ -1,0 +1,9 @@
+{
+  "version": "v1",
+  "packages": {
+    "react-tinacms-inline": {
+      "signature": "d1c1003da29839ad8f823e64f459da34",
+      "file": true
+    }
+  }
+}
