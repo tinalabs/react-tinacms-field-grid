@@ -1,5 +1,5 @@
 {
-  "name": "@tinalabs/react-tinacms-field-grid",
+  "name": "react-tinacms-field-grid",
   "version": "0.1.0",
   "description": "A Flexbox grid builder field",
   "contributors": [
