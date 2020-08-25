@@ -2,6 +2,11 @@
   "name": "@tinalabs/react-tinacms-field-grid",
   "version": "0.1.0",
   "description": "A Flexbox grid builder field",
+  "contributors": [
+    "James O'Halloran <james@forestry.io> (https://forestry.io)",
+    "Chris D. Macrae <chris@forestry.io> (https://forestry.io)"
+  ],
+  "license": "ISC",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "dependencies": {
@@ -36,8 +41,6 @@
     "type": "git",
     "url": "git+https://github.com/tinalabs/react-tinacms-field-grid.git"
   },
-  "author": "@chrisdmacrae",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/tinalabs/react-tinacms-field-grid/issues"
   },
