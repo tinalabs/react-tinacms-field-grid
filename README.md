@@ -7,7 +7,7 @@ A Flexbox grid builder field
 First, install the plugin with its peer dependencies:
 
 ```
-npm i @tinalabs/react-tinacms-field-grid react react-dom tinacms react-tinacms-inline
+npm i react-tinacms-field-grid react react-dom tinacms react-tinacms-inline
 ```
 
 ## Pre-requisites
