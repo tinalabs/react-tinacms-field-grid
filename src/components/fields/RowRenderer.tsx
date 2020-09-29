@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { InlineBlocks } from "react-tinacms-inline";
+import { BlocksContainerProps, InlineBlocks } from "react-tinacms-inline";
 import { InlineGridContext } from "../../providers/InlineGridProvider";
 import { InlineGridRowSchema } from "../../types";
 import { InlineGridRowProps } from "./InlineGrid";
@@ -22,22 +22,19 @@ export function RowRenderer(props: RowRendererProps) {
     }
   }
   let colProps: InlineGridRowProps = column;
+  const rowContainer = ({ innerRef }: BlocksContainerProps) => (
+    <div ref={innerRef}>
+      <Row data={props.data} index={props.index} />
+    </div>
+  );
 
   return (
     <InlineBlocks
       name="cols"
       direction={direction === "vertical" ? "horizontal" : "vertical"}
       blocks={columnBlocks}
-      {...colProps}
-    >
-      {({providedRef, children}) => (
-        <div ref={providedRef}>
-          <Row data={props.data} index={props.index}>
-            {children}
-          </Row>
-        </div>
-      )}
-    </InlineBlocks>
+      components={{Container: rowContainer}}
+      {...colProps} />
   );
 }
 
