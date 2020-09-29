@@ -1,10 +1,10 @@
-import React, { useMemo, useState } from "react";
-import { BlocksControlsProps, InlineBlocks, InlineBlocksProps, useInlineForm } from "react-tinacms-inline";
 import _get from "lodash.get";
+import React, { useMemo, useState } from "react";
+import { BlocksFieldDefinititon } from "tinacms";
+import { BlocksControlsProps, InlineBlocks, InlineBlocksProps, useInlineForm } from "react-tinacms-inline";
 import { InlineGridProvider } from "../../providers/InlineGridProvider";
 import { ComponentList, InlineGridBlock, InlineGridSchema } from "../../types";
 import { RowRenderer } from "./RowRenderer";
-import { BlocksFieldDefinititon, BlockTemplate } from "tinacms";
 
 export interface InlineGridControlProps extends Omit<BlocksControlsProps, "index" | "children"> {}
 

@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { InlineBlocks } from "react-tinacms-inline";
-import ColumnRenderer from "./ColumnRenderer";
 import { InlineGridContext } from "../../providers/InlineGridProvider";
 import { InlineGridRowSchema } from "../../types";
 import { InlineGridRowProps } from "./InlineGrid";
+import ColumnRenderer from "./ColumnRenderer";
 
 export interface RowRendererProps {
   name: string;
@@ -18,7 +18,7 @@ export function RowRenderer(props: RowRendererProps) {
   const columnBlocks = {
     column: {
       Component: ColumnRenderer,
-      template: ("template" in column) ? column.template : column.Block.template;
+      template: ("template" in column) ? column.template : column.Block.template
     }
   }
   let colProps: InlineGridRowProps = column;
