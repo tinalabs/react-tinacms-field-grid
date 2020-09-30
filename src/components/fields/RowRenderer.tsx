@@ -1,40 +1,81 @@
 import React, { useContext } from "react";
-import { BlocksContainerProps, InlineBlocks } from "react-tinacms-inline";
+import { BlocksControlsProps, InlineBlocks, InlineBlocksProps } from "react-tinacms-inline";
 import { InlineGridContext } from "../../providers/InlineGridProvider";
-import { InlineGridRowSchema } from "../../types";
-import { InlineGridRowProps } from "./InlineGrid";
-import ColumnRenderer from "./ColumnRenderer";
+import { InlineGridBlock, PropsSchema } from "../../types";
+import ColumnRenderer, { InlineGridColSchema } from "./ColumnRenderer";
 
 export interface RowRendererProps {
-  name: string;
   index: number;
   data: InlineGridRowSchema<any, any>;
 }
 
+export type InlineGridRowSchema<TRowProps = PropsSchema, TColProps = PropsSchema> = {
+  columns: InlineGridColSchema<TColProps>[];
+} & {
+  [key: string]: TRowProps
+}
+
+export type InlineGridRowProps = InlineGridBlock | {
+  Block: InlineGridBlock;
+} & Omit<BlocksControlsProps, "children">
+  & Omit<InlineBlocksProps, "blocks" | "name">;
+
 export function RowRenderer(props: RowRendererProps) {
-  const { options } = useContext(InlineGridContext);
-  const { row, column, direction } = options;
-  const Row = ("Component" in row) ? row.Component : row.Block.Component;
+  const context = useContext(InlineGridContext);
+  const options = context?.options;
+
+  if (typeof options?.row === "undefined") {
+    throw new Error("You must provide a row block to InlineGrid");
+  }
+
+  const Row = (options.row && "Block" in options?.row)
+    ? options.row.Block
+    : options.row;
+  const rowProps = (options.row && "Block" in options.row)
+    ? options.row
+    : {};
   const columnBlocks = {
     column: {
       Component: ColumnRenderer,
-      template: ("template" in column) ? column.template : column.Block.template
+      template: (options.column)
+        ? ("template" in options.column) ? options.column.template : options.column.Block.template
+        :
+        {
+          label: "Column"  
+        }
     }
   }
-  let colProps: InlineGridRowProps = column;
-  const rowContainer = ({ innerRef }: BlocksContainerProps) => (
-    <div ref={innerRef}>
-      <Row data={props.data} index={props.index} />
-    </div>
-  );
+  const columnProps = (options.column && "Block" in options.column)
+  ? options.column
+  : {};
+  const rowContainer = ({ innerRef, children }: any) => {
+    const rowData: Partial<InlineGridRowSchema> = props.data;
+
+    delete rowData.columns;
+
+    console.log({
+      rowProps: props,
+      rowInlineGridProps: columnProps,
+      rowData
+    });
+
+    return (
+      <div ref={innerRef}>
+        <Row.Component controls={rowProps} data={rowData} index={props.index}>
+          {children}
+        </Row.Component>
+      </div>
+    )
+  };
 
   return (
     <InlineBlocks
-      name="cols"
-      direction={direction === "vertical" ? "horizontal" : "vertical"}
+      {...columnProps}
+      name="columns"
+      direction={options?.direction === "vertical" ? "horizontal" : "vertical"}
       blocks={columnBlocks}
-      components={{Container: rowContainer}}
-      {...colProps} />
+      components={{ Container: rowContainer }}
+    />
   );
 }
 
