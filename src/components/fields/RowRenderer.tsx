@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { BlocksControls, BlocksControlsProps, InlineBlocks, InlineBlocksProps } from "react-tinacms-inline";
+import { BlocksControlsProps, InlineBlocks, InlineBlocksProps } from "react-tinacms-inline";
 import { InlineGridContext } from "../../providers/InlineGridProvider";
 import { InlineGridBlock, PropsSchema } from "../../types";
 import ColumnRenderer, { InlineGridColSchema } from "./ColumnRenderer";

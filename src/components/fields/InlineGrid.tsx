@@ -43,7 +43,10 @@ export function InlineGrid<TRowProps, TColProps>(this: React.Component, props: I
   console.log({
     layout,
     props,
-    rowProps
+    rowProps,
+    name: `${name}.rows`,
+    rowBlocks,
+    direction
   });
 
   return (
