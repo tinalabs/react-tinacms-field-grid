@@ -1,17 +1,20 @@
 import React from "react";
-import { InlineGridProps } from "../components/fields/InlineGrid";
-import { InlineGridBlock, InlineGridSchema } from "../types";
+import { InlineGridProps, InlineGridSchema } from "../components/fields/InlineGrid";
+import { InlineGridBlock } from "../types";
 
 export interface InlineGridContextProps<TRowProps = any, TColProps = any> {
-  data: InlineGridSchema<TRowProps, TColProps>;
+  izLazy: boolean;
   componentMap: Map<string, InlineGridBlock>;
   setComponentMap(componentMap: InlineGridContextProps['componentMap']): void;
-  options: InlineGridProps
+  data?: InlineGridSchema<TRowProps, TColProps> | null;
+  options?: InlineGridProps
 }
 
-export const InlineGridContext = React.createContext<InlineGridContextProps | null>(
-  null
-);
+export const InlineGridContext = React.createContext<InlineGridContextProps>({
+  izLazy: false,
+  componentMap: new Map(),
+  setComponentMap: () => undefined
+});
 
 export const InlineGridProvider = InlineGridContext.Provider;
 
