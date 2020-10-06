@@ -6,5 +6,10 @@
     "esModuleInterop": true,
     "jsx": "react",
     "lib": ["esnext", "dom"]
-  }
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx"
+  ]
 }

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { InlineGridContext } from "../providers/InlineGridProvider";
+import { InlineGridContext } from "../state/InlineGridProvider";
 
 export function useInlineGrid() {
   const context = useContext(InlineGridContext);
