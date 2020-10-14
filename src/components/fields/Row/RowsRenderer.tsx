@@ -1,5 +1,5 @@
 import React, { useMemo } from "react";
-import { BlockComponentProps, BlocksControls, InlineBlocks } from "react-tinacms-inline";
+import { BlockComponentProps, InlineBlocks } from "react-tinacms-inline";
 import { useInlineGrid } from "../../../hooks/useInlineGrid";
 import RenderChildren from "../../RenderChildren";
 import { ColumnsRenderer } from "../Column/ColumnsRenderer";
@@ -21,6 +21,7 @@ export function RowsRenderer(props: RowsRendererProps) {
       name={`${options?.name}.rows`}
       direction={options?.direction}
       blocks={rowBlocks}
+      components={options?.components}
     />
   );
 }
@@ -31,14 +32,12 @@ export interface RowRendererProps extends BlockComponentProps {
 
 export function RowRenderer(props: RowRendererProps) {
   const { options } = useInlineGrid();
-  const Grid = useMemo(() => options?.components?.Container ? options?.components?.Container : RenderChildren, [options?.components?.Container]);
+  const Grid = useMemo(() => options?.components?.Grid ? options?.components?.Grid : RenderChildren, [options?.components?.Grid]);
 
   return (
-    <BlocksControls index={props.index}>
-      <Grid innerRef={null}>
-        <ColumnsRenderer />
-      </Grid>
-    </BlocksControls>
+    <Grid>
+      <ColumnsRenderer row={props} />
+    </Grid>
   )
 }
 

@@ -5,12 +5,13 @@ import { InlineGridRow, InlineGridRowProps, RowsRenderer } from '../Row';
 import { InlineGridColumn, InlineGridColumnProps } from '../Column';
 import { BlockTemplate } from "tinacms";
 
-export interface InlineGridProps<TBlocks extends any> extends Omit<InlineBlocksProps, "blocks" | "controls"> {
+export interface InlineGridProps<TBlocks extends any> extends Omit<InlineBlocksProps, "blocks" | "controls" | "components"> {
   blocks: TBlocks;
   rowOptions?: RowOptions;
   columnOptions?: ColumnOptions;
   components?: {
     Container?: React.FunctionComponent<BlocksContainerProps>,
+    Grid?: React.FunctionComponent<any>;
     Row?: React.FunctionComponent<InlineGridRowProps>
     Column?: React.FunctionComponent<InlineGridColumnProps>
   }
