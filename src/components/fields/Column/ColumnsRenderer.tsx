@@ -21,7 +21,7 @@ export function ColumnsRenderer(props: ColumnsRendererProps) {
         {(containerProps as any).children}
       </Row>
     </div>
-  ), []);
+  ), [props.row]);
 
   return (
     <InlineBlocks
