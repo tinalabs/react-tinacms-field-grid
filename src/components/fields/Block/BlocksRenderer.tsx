@@ -4,11 +4,14 @@ import { useInlineGrid } from "../../../hooks/useInlineGrid";
 
 export function BlocksRenderer() {
   const { options } = useInlineGrid();
+  const direction = options?.blockOptions?.direction ?? options?.rowOptions?.direction === "vertical" ? "vertical" : "horizonal";
+  const name = options?.blockOptions?.name ?? "blocks";
   
   return (
     <InlineBlocks
-      name="blocks"
-      direction={options?.direction}
+      {...options?.blockOptions}
+      name={name}
+      direction={direction as any}
       blocks={options?.blocks} />
   )
 }

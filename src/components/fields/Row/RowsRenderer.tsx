@@ -14,12 +14,13 @@ export function RowsRenderer(props: RowsRendererProps) {
       template: options?.rowOptions?.template ?? { label: "Row" }
     }
   }), [options?.rowOptions?.template]);
+  const rowName = useMemo(() => options?.rowOptions?.name ?? "rows", [options?.rowOptions?.name]);
 
   return (
     <InlineBlocks
       {...options?.rowOptions}
-      name={`${options?.name}.rows`}
-      direction={options?.direction}
+      name={`${options?.name}.${rowName}`}
+      direction={options?.rowOptions?.direction ?? "vertical"}
       blocks={rowBlocks}
       components={options?.components}
     />
